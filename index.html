@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAPE - Instituto Adventista Pernambucano de Ensino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animação para a logo (fade-in) */
+        .logo {
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Animação para os textos do corpo (subir ao deslizar) */
+        .text-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .text-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estilo da galeria mosaico */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            opacity: 0;
+            animation: fadeInGallery 0.5s ease-in forwards;
+        }
+
+        /* Animação para fotos da galeria (aparecer uma a uma) */
+        .gallery img:nth-child(1) { animation-delay: 0.2s; }
+        .gallery img:nth-child(2) { animation-delay: 0.4s; }
+        .gallery img:nth-child(3) { animation-delay: 0.6s; }
+        .gallery img:nth-child(4) { animation-delay: 0.8s; }
+        .gallery img:nth-child(5) { animation-delay: 1.0s; }
+        .gallery img:nth-child(6) { animation-delay: 1.2s; }
+
+        @keyframes fadeInGallery {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Menu sanduíche */
+        #menu {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #menu.hidden {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white shadow-md z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/50" alt="Logo IAPE" class="logo w-12 h-12">
+                <h1 class="ml-4 text-xl font-bold">IAPE</h1>
+            </div>
+            <button id="menu-toggle" class="text-2xl md:hidden">☰</button>
+            <nav id="menu" class="fixed top-0 right-0 h-full bg-white shadow-lg w-64 p-4 md:static md:flex md:shadow-none md:w-auto hidden md:block">
+                <ul class="flex flex-col md:flex-row md:space-x-4">
+                    <li><a href="#home" class="block py-2 hover:text-blue-500">Home</a></li>
+                    <li><a href="#corpo" class="block py-2 hover:text-blue-500">Destaques</a></li>
+                    <li><a href="#galeria" class="block py-2 hover:text-blue-500">Galeria</a></li>
+                    <li><a href="#contato" class="block py-2 hover:text-blue-500">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Home -->
+    <section id="home" class="min-h-screen flex items-center justify-center">
+        <h2 class="text-4xl font-bold text-center">Bem-vindo ao IAPE</h2>
+    </section>
+
+    <!-- Seção Corpo -->
+    <section id="corpo" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Nossos Destaques</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-section">
+                    <img src="https://via.placeholder.com/300" alt="Imagem 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Educação de Qualidade</h3>
+                    <p class="text-gray-700">Oferecemos um ensino de excelência, focado no desenvolvimento integral do aluno.</p>
+                </div>
+                <div class="text-section">
+                    <img src="https://via.placeholder.com/300" alt="Imagem 2" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Valores Cristãos</h3>
+                    <p class="text-gray-700">Promovemos uma educação baseada em princípios éticos e cristãos.</p>
+                </div>
+                <div class="text-section">
+                    <img src="https://via.placeholder.com/300" alt="Imagem 3" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Infraestrutura Moderna</h3>
+                    <p class="text-gray-700">Contamos com instalações modernas para apoiar o aprendizado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Galeria -->
+    <section id="galeria" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Galeria</h2>
+            <div class="gallery">
+                <img src="https://via.placeholder.com/300x200" alt="Foto 1">
+                <img src="https://via.placeholder.com/300x400" alt="Foto 2">
+                <img src="https://via.placeholder.com/300x250" alt="Foto 3">
+                <img src="https://via.placeholder.com/300x350" alt="Foto 4">
+                <img src="https://via.placeholder.com/300x300" alt="Foto 5">
+                <img src="https://via.placeholder.com/300x200" alt="Foto 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Contato</h2>
+            <div class="max-w-md mx-auto">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 mb-2">Nome</label>
+                    <input type="text" id="name" class="w-full p-2 border rounded-lg" placeholder="Seu nome">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700 mb-2">Mensagem</label>
+                    <textarea id="message" class="w-full p-2 border rounded-lg" rows="4" placeholder="Sua mensagem"></textarea>
+                </div>
+                <button id="send-whatsapp" class="w-full bg-green-500 text-white p-2 rounded-lg hover:bg-green-600">Enviar via WhatsApp</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">Lorena Barbosa</p>
+            <p class="text-lg">IAPE - Instituto Adventista Pernambucano de Ensino</p>
+            <p class="text-lg">BR 232, KM 91, CEP 55.695-000, Sairé-PE</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu sanduíche
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Animação de scroll para os textos do corpo
+        const textSections = document.querySelectorAll('.text-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        textSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Enviar mensagem para o WhatsApp
+        const sendButton = document.getElementById('send-whatsapp');
+        sendButton.addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            if (name && message) {
+                const whatsappMessage = `Olá, meu nome é ${name}. ${message}`;
+                const whatsappUrl = `https://wa.me/+5581995196171?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappUrl, '_blank');
+            } else {
+                alert('Por favor, preencha o nome e a mensagem.');
+            }
+        });
+    </script>
+</body>
+</html>
